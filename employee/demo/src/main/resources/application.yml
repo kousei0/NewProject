@@ -1,0 +1,28 @@
+server:
+  port: 9999
+  servlet:
+    context-path: /
+
+spring:
+#  datasource:
+#    username: root
+#    password: admin
+#    url: jdbc:mysql://127.0.0.1:3306/employee?useSSL=false&serverTimezone=UTC&characterEncoding=utf-8
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+  # 数据库配置
+  datasource:
+    url: jdbc:mysql://localhost:3306/employee?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: admin
+    driver-class-name: org.mariadb.jdbc.Driver
+
+logging:
+  level:
+    com.example: debug
+
+mybatis-plus:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.example.sys.entity
+  base-packages: com.example.sys.mapper
+  configuration:
+    map-underscore-to-camel-case: true
