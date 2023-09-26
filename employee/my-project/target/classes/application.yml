@@ -1,0 +1,67 @@
+
+# 环境配置
+server:
+  # 服务器的HTTP端口，默认为8080
+  port: 1122
+  servlet:
+    # 应用的访问路径
+    context-path: /myProject
+    encoding:
+      charset: utf-8
+      force: true
+  tomcat:
+    # tomcat的URI编码
+    uri-encoding: UTF-8
+    # 连接数满后的排队数，默认为100
+    accept-count: 1000
+    threads:
+      # tomcat最大线程数，默认为200
+      max: 800
+      # Tomcat启动初始化的线程数，默认值10
+      min-spare: 100
+spring:
+  # 服务模块
+  devtools:
+    restart:
+      # 热部署开关
+      enabled: true
+  mvc:
+    #springboot2.6.0中将SpringMVC 默认路径匹配策略从AntPathMatcher 更改为PathPatternParser，导致swagger出错，解决办法是切换回原先的AntPathMatcher
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  servlet:
+    multipart:
+      #单个文件的大小
+      max-file-size: 200MB
+      #单次请求的文件的总大小
+      max-request-size: 200MB
+  # 数据库配置
+  datasource:
+    url: jdbc:mysql://localhost:3306/employee?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: admin
+    driver-class-name: org.mariadb.jdbc.Driver
+#    redis
+  redis:
+    host: localhost
+    port: 6379
+# mybatis-plus soft delete config
+mybatis-plus:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.example.sys.entity
+  base-packages: com.example.sys.mapper
+  global-config:
+    db-config:
+      logic-delete-field: isDeleted
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+   #开启sql打印
+  configuration:
+   log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
+# 日志配置
+logging:
+  level:
+#    com.baomidou.mybatisplus: debug
+    # 定义项目日志输出级别
+    cn.siccs: debug
+    org.springframework: warn

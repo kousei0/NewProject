@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.myProject.mapper.SalaryMapper">
+
+    <select id="selectList" resultType="com.example.myProject.entity.Salary">
+        select * from salary
+    </select>
+
+    <select id="selectById" resultType="com.example.myProject.entity.Salary" parameterType="java.lang.Integer">
+        select * from salary
+        where salaryid = #{salaryid}
+    </select>
+
+    <select id="selectByName" resultType="com.example.myProject.entity.Salary" parameterType="java.lang.String">
+        select * from salary
+        where name = #{name}
+    </select>
+
+    <select id="selectByDepartment" resultType="com.example.myProject.entity.Salary" parameterType="java.lang.String">
+        select * from salary
+        where department = #{department}
+    </select>
+
+    <select id="selectByMonth" resultType="com.example.myProject.entity.Salary" parameterType="java.lang.String">
+        select * from salary
+        where month = #{month}
+    </select>
+
+    <insert id="insertOne" parameterType="com.example.myProject.entity.Salary">
+        insert into salary (salaryid, name, department, month, basicSalary, allowance, tax, afterTax)
+        values (#{salaryid}, #{name}, #{department}, #{month}, #{basicSalary}, #{allowance}, #{tax}, #{afterTax})
+    </insert>
+
+    <update id="updateOne" parameterType="com.example.myProject.entity.Salary">
+        update salary
+        set name = #{name}, department = #{department}, month = #{month}, basicSalary = #{basicSalary}, allowance = #{allowance}, tax = #{tax}, afterTax = #{afterTax}
+        where salaryid = #{salaryid}
+    </update>
+
+    <delete id="deleteOne" parameterType="java.lang.Integer">
+        delete from salary
+        where salaryid = #{salaryid}
+    </delete>
+
+</mapper>

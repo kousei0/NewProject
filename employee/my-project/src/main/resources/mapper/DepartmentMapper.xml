@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.myProject.mapper.DepartmentMapper">
+
+    <select id="selectList" resultType="com.example.myProject.entity.Department">
+        select * from department
+    </select>
+
+    <select id="selectById" resultType="com.example.myProject.entity.Department" parameterType="java.lang.Integer">
+        select * from department
+        where departmentid = #{departmentid}
+    </select>
+
+    <insert id="insertOne" parameterType="com.example.myProject.entity.Department">
+        insert into department (department, number, content)
+        values (#{department}, #{number}, #{content})
+    </insert>
+
+    <update id="updateOne" parameterType="com.example.myProject.entity.Department">
+        update department
+        set department = #{department}, number = #{number}, content = #{content}
+        where departmentid = #{departmentid}
+    </update>
+
+    <delete id="deleteOne" parameterType="java.lang.Integer">
+        delete from department
+        where departmentid = #{departmentid}
+    </delete>
+
+</mapper>

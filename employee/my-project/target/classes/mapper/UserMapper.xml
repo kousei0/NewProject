@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.myProject.mapper.UserMapper">
+
+    <select id="selectList" resultType="com.example.myProject.entity.User">
+        select * from user
+    </select>
+
+    <select id="selectById" resultType="com.example.myProject.entity.User" parameterType="java.lang.Integer">
+        select * from user
+        where userid = #{userid}
+    </select>
+
+    <select id="selectByName" resultType="com.example.myProject.entity.User" parameterType="java.lang.String">
+        select * from user
+        where name = #{name}
+    </select>
+
+    <select id="selectByDepartment" resultType="com.example.myProject.entity.User" parameterType="java.lang.String">
+        select * from user
+        where department = #{department}
+    </select>
+
+    <insert id="insertOne" parameterType="com.example.myProject.entity.User">
+        insert into user (userid, username, password, identity, name, gender, birth, address, phone, mail, department, position)
+        values (#{userid}, #{username}, #{password}, #{identity}, #{name}, #{gender}, #{birth}, #{address}, #{phone}, #{mail}, #{department}, #{position})
+    </insert>
+
+    <update id="updateOne" parameterType="com.example.myProject.entity.User">
+        update user
+        set username = #{username}, password = #{password}, identity = #{identity}, name = #{name} , gender = #{gender}, birth = #{birth}, address = #{address}, phone = #{phone}, mail = #{mail}, department = #{department}, position = #{position}
+        where userid = #{userid}
+    </update>
+
+    <delete id="deleteOne" parameterType="java.lang.Integer">
+        delete from user
+        where userid = #{userid}
+    </delete>
+
+</mapper>
